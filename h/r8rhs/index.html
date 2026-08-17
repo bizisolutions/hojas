@@ -1,0 +1,1406 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Incolma · Lo que necesitamos — Bizi</title>
+<!-- La tarjeta que dibuja WhatsApp cuando se manda el ENLACE. No es una
+     petición de red: el navegador nunca descarga estas direcciones al
+     abrir el archivo, sólo las lee quien previsualiza el enlace. -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Incolma · Lo que necesitamos — Bizi">
+<meta property="og:description" content="Tres cosas, y les mandamos la propuesta con alcance y precio. Se llena en 15 minutos y no hay que instalar nada.">
+<meta property="og:image" content="https://bizisolutions.github.io/hojas/h/r8rhs/og.png">
+<meta property="og:url" content="https://bizisolutions.github.io/hojas/h/r8rhs/">
+<meta property="og:locale" content="es_CO">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+:root {
+  --bg-page: #0a0812;
+  --bg-surface: #111018;
+  --glass: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --text-main: #f9f9f9;
+  --text-secondary: #cbd5e1;
+  --text-muted: #9b97b4;
+  --accent: #22b8cf;
+  --accent-soft: #4fc9db;
+  --accent-ink: #08272c;
+  --purple-violet: #4a268c;
+  --good: #4ade80;
+  --warn: #fbbf24;
+  --radius: 12px;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; padding: 0;
+  background: var(--bg-page);
+  color: var(--text-main);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px; line-height: 1.5;
+  overflow-x: hidden;
+}
+.barra {
+  position: sticky; top: 0; z-index: 60;
+  display: flex; align-items: center; gap: 12px;
+  padding: 11px 16px;
+  background: rgba(10, 8, 18, 0.94);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--glass-border);
+}
+.marca { display: flex; align-items: center; gap: 9px; font-weight: 700; letter-spacing: -0.01em; }
+.marca-punto {
+  width: 22px; height: 22px; border-radius: 7px; flex: none;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--purple-violet) 100%);
+}
+.marca-cliente {
+  color: var(--text-muted); font-weight: 500; font-size: 0.82rem;
+  padding-left: 10px; margin-left: 2px; border-left: 1px solid var(--glass-border);
+}
+.avance { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+.avance-texto { font-size: 0.76rem; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+.avance-puntos { display: flex; gap: 5px; }
+.avance-punto {
+  width: 20px; height: 20px; border-radius: 50%;
+  display: grid; place-items: center;
+  font-size: 0.66rem; font-weight: 700;
+  background: rgba(255, 255, 255, 0.09); color: var(--text-muted);
+  border: 1px solid var(--glass-border);
+  transition: background .18s ease, color .18s ease;
+}
+.avance-punto.listo { background: var(--accent); color: var(--accent-ink); border-color: transparent; }
+.hoja { max-width: 860px; margin: 0 auto; padding: 26px 18px 40px; }
+.ojillo {
+  display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: .09em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 10px;
+}
+h1 { font-size: clamp(1.55rem, 5vw, 2.3rem); line-height: 1.14; margin: 0 0 12px; letter-spacing: -0.025em; }
+h2 { font-size: 1.12rem; margin: 0; letter-spacing: -0.015em; }
+h3 { font-size: 0.96rem; margin: 0 0 8px; letter-spacing: -0.01em; }
+p { color: var(--text-secondary); margin: 0 0 12px; }
+.entradilla { font-size: clamp(1rem, 2.4vw, 1.1rem); max-width: 62ch; }
+.apunte { font-size: 0.84rem; color: var(--text-muted); }
+strong { color: var(--text-main); }
+.aviso {
+  display: flex; gap: 11px; align-items: flex-start;
+  background: rgba(34, 184, 207, 0.06);
+  border: 1px solid rgba(34, 184, 207, 0.3);
+  border-radius: var(--radius); padding: 13px 15px; margin: 18px 0 26px;
+}
+.aviso-icono { font-size: 1.05rem; line-height: 1.3; }
+.aviso p { margin: 0; font-size: 0.9rem; }
+.alerta {
+  display: flex; gap: 11px; align-items: flex-start;
+  background: rgba(251, 191, 36, 0.07);
+  border: 1px solid rgba(251, 191, 36, 0.42);
+  border-radius: var(--radius); padding: 13px 15px; margin: 18px 0 26px;
+}
+.alerta p { margin: 0 0 6px; font-size: 0.9rem; }
+.alerta p:last-child { margin: 0; }
+.alerta strong { color: var(--warn); }
+.alerta .apunte strong { color: var(--text-main); }
+.bloque {
+  background: var(--glass); border: 1px solid var(--glass-border);
+  border-radius: var(--radius); padding: 18px; margin-bottom: 16px;
+}
+.bloque-cab { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 6px; }
+.bloque-orden {
+  width: 28px; height: 28px; flex: none; border-radius: 50%;
+  display: grid; place-items: center;
+  font-size: 0.84rem; font-weight: 700;
+  background: var(--accent); color: var(--accent-ink);
+}
+.bloque-cab .apunte { margin: 3px 0 0; }
+.bloque.completo { border-color: rgba(74, 222, 128, 0.34); }
+.bloque.completo .bloque-orden { background: var(--good); color: #06240f; }
+.bloque-cuerpo { margin-top: 14px; }
+.bloque-liviano { background: transparent; }
+.campo { margin-bottom: 15px; }
+.campo:last-child { margin-bottom: 0; }
+.campo > label, .campo-titulo {
+  display: block; font-size: 0.88rem; font-weight: 600;
+  color: var(--text-main); margin-bottom: 4px;
+}
+.marca-opcional { font-weight: 500; color: var(--text-muted); font-size: 0.8rem; }
+.pista { font-size: 0.8rem; color: var(--text-muted); margin: 0 0 7px; line-height: 1.45; }
+.pista strong { color: var(--text-secondary); }
+.ejemplo { color: var(--text-muted); font-style: italic; }
+input[type="text"], input[type="email"], input[type="tel"], textarea, select {
+  width: 100%;
+  font-family: inherit;
+  font-size: 16px;
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  border-radius: 9px;
+  padding: 10px 12px;
+  transition: border-color .15s ease, background .15s ease;
+}
+textarea { resize: vertical; min-height: 62px; line-height: 1.45; overflow: hidden; }
+input::placeholder, textarea::placeholder { color: #6d6a80; }
+input:focus, textarea:focus, select:focus {
+  outline: none; border-color: var(--accent);
+  background: rgba(34, 184, 207, 0.07);
+}
+select {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--text-muted) 50%),
+                    linear-gradient(135deg, var(--text-muted) 50%, transparent 50%);
+  background-position: calc(100% - 17px) 50%, calc(100% - 12px) 50%;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 32px;
+}
+select option { background: var(--bg-surface); color: var(--text-main); }
+.dupla { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.opciones { display: flex; flex-wrap: wrap; gap: 8px; }
+.opcion { position: relative; }
+.opcion input { position: absolute; opacity: 0; width: 0; height: 0; }
+.opcion span {
+  display: inline-block; cursor: pointer;
+  font-size: 0.86rem; padding: 7px 15px; border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  transition: all .15s ease;
+}
+.opcion input:checked + span { background: var(--accent); color: var(--accent-ink); border-color: transparent; font-weight: 600; }
+.opcion input:focus-visible + span { outline: 2px solid var(--accent-soft); outline-offset: 2px; }
+.casilla { display: flex; align-items: flex-start; gap: 9px; cursor: pointer; }
+.casilla input { width: 18px; height: 18px; margin: 2px 0 0; flex: none; accent-color: var(--accent); }
+.casilla span { font-size: 0.9rem; color: var(--text-secondary); }
+.archivo {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  border-left: 3px solid var(--accent);
+  border-radius: 10px; padding: 15px; margin-bottom: 13px;
+}
+.archivo-cab { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.archivo-titulo { font-size: 0.8rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--accent); }
+.decide { margin-top: 20px; padding-top: 18px; border-top: 1px dashed var(--glass-border); }
+.cierre-correo {
+  background: rgba(34, 184, 207, 0.06);
+  border: 1px solid rgba(34, 184, 207, 0.3);
+  border-radius: var(--radius); padding: 13px 15px; margin: 18px 0 0;
+}
+[hidden] { display: none !important; }
+.btn {
+  font-family: inherit; font-size: 0.92rem; font-weight: 600;
+  padding: 11px 20px; border-radius: 10px; cursor: pointer;
+  border: 1px solid transparent; transition: all .15s ease;
+}
+.btn-agregar {
+  width: 100%; margin-top: 4px;
+  background: transparent; border: 1px dashed rgba(34, 184, 207, 0.45); color: var(--accent);
+}
+.btn-agregar:hover { background: rgba(34, 184, 207, 0.07); }
+.btn-primario { background: var(--accent); color: var(--accent-ink); }
+.btn-primario:hover { background: var(--accent-soft); }
+.btn-fantasma { background: transparent; color: var(--text-secondary); border-color: var(--glass-border); }
+.btn-fantasma:hover { color: var(--text-main); border-color: rgba(255, 255, 255, 0.25); }
+.acciones {
+  position: sticky; bottom: 0; z-index: 50;
+  display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+  padding: 14px 18px;
+  margin: 26px -18px -40px;
+  background: rgba(10, 8, 18, 0.94);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid var(--glass-border);
+}
+.acciones .btn-fantasma:last-child { margin-left: auto; }
+.acciones-aviso { font-size: 0.78rem; color: var(--good); flex-basis: 100%; margin: 0; min-height: 1.1em; }
+.rescate { display: none; margin-top: 14px; }
+.rescate.visible { display: block; }
+.rescate textarea {
+  min-height: 220px; overflow: auto;
+  font-family: ui-monospace, 'Cascadia Mono', Consolas, monospace; font-size: 13px;
+}
+@media (max-width: 640px) {
+  .hoja { padding: 20px 14px 30px; }
+  .dupla { grid-template-columns: 1fr; }
+  .acciones { margin: 22px -14px -30px; padding: 12px 14px; }
+  .acciones .btn { flex: 1 1 auto; }
+  .acciones .btn-fantasma:last-child { margin-left: 0; }
+  .avance-texto { display: none; }
+}
+@media print {
+  html, body { background: #fff; color: #111; font-size: 11pt; }
+  .barra { position: static; background: none; border-bottom: 1px solid #ccc; padding: 0 0 8px; margin-bottom: 14px; }
+  .marca-punto { background: #22b8cf; }
+  .marca-cliente, .apunte, .pista, .avance-texto { color: #555; }
+  p, .casilla span { color: #222; }
+  strong, h1, h2, h3, .campo > label, .campo-titulo { color: #000; }
+  .hoja { max-width: none; padding: 0; }
+  .aviso, .bloque, .archivo { background: none; border-color: #bbb; }
+  .alerta { display: none !important; }
+  .archivo { border-left-color: #22b8cf; }
+  .ojillo, .archivo-titulo { color: #0d7f91; }
+  .bloque-orden { background: #22b8cf; color: #08272c; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .avance-punto.listo { background: #22b8cf; color: #08272c; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  input[type="text"], input[type="email"], input[type="tel"], textarea, select {
+    background: none; border: 0; border-bottom: 1px solid #999; border-radius: 0;
+    color: #000; padding: 3px 2px;
+  }
+  textarea { min-height: 48px; }
+  .opcion span { border: 1px solid #999; color: #333; }
+  .opcion input:checked + span { background: #22b8cf; color: #08272c; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .bloque, .archivo { break-inside: avoid; page-break-inside: avoid; }
+  #archivos .archivo[hidden] { display: block !important; }
+  .acciones, .rescate, .solo-pantalla { display: none !important; }
+  .cierre-correo { background: none; border-color: #999; }
+}
+.alerta-marco { max-width: 1180px; margin: 0 auto; padding: 20px 20px 0; }
+.alerta {
+  position: relative;
+  margin: 0 0 24px;
+  border-radius: 14px;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(251, 113, 133, 0.13) 0%, rgba(251, 113, 133, 0.05) 100%),
+    var(--bg-surface, #111018);
+  border: 1px solid rgba(251, 113, 133, 0.5);
+  box-shadow: 0 0 0 1px rgba(251, 113, 133, 0.08), 0 10px 34px -14px rgba(251, 113, 133, 0.55);
+  animation: alerta-entra .34s ease both;
+}
+@keyframes alerta-entra {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: none; }
+}
+.alerta::before {
+  content: '';
+  position: absolute; inset: 0 auto 0 0; width: 4px;
+  background: linear-gradient(180deg, #fb7185 0%, #f43f5e 55%, #9f1239 100%);
+}
+.alerta-cuerpo { padding: 16px 18px 17px 21px; }
+.alerta-cab { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 9px; }
+.alerta-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: #fb7185; color: #2b0710;
+  font-size: 0.68rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 999px; white-space: nowrap;
+}
+.alerta-chip::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: #2b0710; animation: alerta-latido 1.9s ease-in-out infinite;
+}
+@keyframes alerta-latido {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .35; transform: scale(.7); }
+}
+.alerta-titulo {
+  margin: 0; font-size: clamp(1.02rem, 2.9vw, 1.24rem); line-height: 1.2;
+  letter-spacing: -0.015em; color: #ffe4e6;
+}
+.alerta-cuerpo > p { margin: 0 0 12px; font-size: 0.9rem; color: var(--text-secondary, #cbd5e1); }
+.alerta-cuerpo > p strong { color: #ffe4e6; }
+.alerta-salidas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.alerta-salida {
+  display: flex; gap: 9px; align-items: flex-start;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 10px; padding: 10px 11px;
+}
+.alerta-salida-icono { font-size: 1.05rem; line-height: 1.25; flex: none; }
+.alerta-salida strong { display: block; font-size: 0.84rem; margin-bottom: 2px; color: var(--text-main, #f9f9f9); }
+.alerta-salida span.detalle { font-size: 0.78rem; color: var(--text-muted, #9b97b4); line-height: 1.4; }
+.alerta-enlace {
+  display: flex; align-items: center; gap: 12px;
+  margin: 0 0 11px; padding: 12px 14px;
+  border-radius: 11px; text-decoration: none;
+  background: rgba(74, 222, 128, 0.12);
+  border: 1px solid rgba(74, 222, 128, 0.42);
+}
+.alerta-enlace-icono { font-size: 1.15rem; line-height: 1.2; flex: none; }
+.alerta-enlace-texto { min-width: 0; }
+.alerta-enlace strong {
+  display: block; font-size: 0.92rem; color: #dcfce7; margin-bottom: 2px;
+}
+.alerta-enlace-url {
+  display: block; font-size: 0.8rem; color: #86efac;
+  text-decoration: underline; text-underline-offset: 2px; word-break: break-all;
+}
+.alerta-enlace-nota {
+  margin: 0 0 12px; font-size: 0.78rem; line-height: 1.45;
+  color: var(--text-muted, #9b97b4);
+}
+.alerta-enlace-nota strong { color: var(--text-main, #f9f9f9); }
+.alerta-pie {
+  margin: 11px 0 0; padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+  font-size: 0.8rem; color: var(--text-muted, #9b97b4); line-height: 1.45;
+}
+.alerta-pie a {
+  color: #ffe4e6; font-weight: 700;
+  text-decoration: underline; text-underline-offset: 2px;
+  word-break: break-word;
+}
+@media (max-width: 700px) {
+  .alerta-salidas { grid-template-columns: 1fr; }
+  .alerta-cuerpo { padding: 14px 15px 15px 18px; }
+}
+@media print { .alerta { display: none !important; } }
+@media (prefers-reduced-motion: reduce) {
+  .alerta { animation: none; }
+  .alerta-chip::before { animation: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="barra">
+  <div class="marca"><span class="marca-punto"></span>Bizi<span class="marca-cliente">Incolma</span></div>
+  <div class="avance solo-pantalla" id="avance" hidden>
+    <span class="avance-texto" id="avance-texto">0 de 3 listos</span>
+    <div class="avance-puntos">
+      <span class="avance-punto" data-paso="1">1</span>
+      <span class="avance-punto" data-paso="2">2</span>
+      <span class="avance-punto" data-paso="3">3</span>
+    </div>
+  </div>
+</header>
+
+
+<main class="hoja">
+  <span class="ojillo">Después de la demo</span>
+  <h1>Lo que necesitamos de ustedes</h1>
+  <p class="entradilla">
+    Tres cosas, y con ellas les mandamos una propuesta con alcance y precio. Todavía no
+    les pasamos un precio y es a propósito: <strong>no hemos visto sus datos</strong>, y
+    cotizar sin verlos es adivinar — el que adivina barato entrega tarde.
+  </p>
+
+  <div class="aviso">
+    <div class="aviso-icono">📧</div>
+    <p>
+      <strong>Los archivos no se adjuntan en esta hoja</strong> — acá sólo se describen.
+      Cuando termines, manda esta hoja y las exportaciones por correo a
+      <strong>consultant@bizi.solutions</strong>, o por el mismo chat por donde te llegó.
+      Si prefieres papel, imprímela y llénala a mano.
+    </p>
+  </div>
+
+
+  <div class="alerta" id="alerta-js" role="alert">
+    <div class="alerta-cuerpo">
+      <div class="alerta-cab">
+        <span class="alerta-chip">Importante</span>
+        <h2 class="alerta-titulo">Esto es una vista previa: lo que escribas no se guarda</h2>
+      </div>
+      <p>Estás viéndola dentro de WhatsApp o del correo, y esa vista sólo <strong>muestra</strong> el documento: se puede leer, pero <strong>lo que escribas no se guarda</strong> y se pierde al cerrar. No está dañada — así se ve cuando se abre desde el chat.</p>
+      <a class="alerta-enlace" href="https://bizisolutions.github.io/hojas/h/r8rhs/">
+        <span class="alerta-enlace-icono">🔗</span>
+        <span class="alerta-enlace-texto">
+          <strong>Ábrela aquí, sin descargar nada</strong>
+          <span class="alerta-enlace-url">bizisolutions.github.io/hojas/h/r8rhs/</span>
+        </span>
+      </a>
+      <p class="alerta-enlace-nota">Es la misma hoja, en internet: ahí sí se llena y
+      <strong>se guarda sola</strong>. Si no puedes tocar el enlace, copia esa dirección y
+      pégala en Chrome o Safari.</p>
+      <div class="alerta-salidas">
+        <div class="alerta-salida">
+          <span class="alerta-salida-icono">💻</span>
+          <div><strong>En el computador — lo más fácil</strong>
+          <span class="detalle">Guarda el archivo en el Escritorio (clic derecho →
+          <strong>Guardar como</strong>) y ábrelo con doble clic. Se abre solo en
+          Chrome, Safari o Edge.</span></div>
+        </div>
+        <div class="alerta-salida">
+          <span class="alerta-salida-icono">📱</span>
+          <div><strong>En el celular</strong>
+          <span class="detalle"><strong>Android</strong>: los tres puntos →
+          <em>Abrir en Chrome</em>. <strong>iPhone</strong>: casi nunca deja abrirlo en
+          Safari; toca <em>Compartir</em> → <em>Guardar en Archivos</em> y ábrelo desde la
+          app <strong>Archivos</strong>. Si no aparece, hazlo desde un computador.</span></div>
+        </div>
+        <div class="alerta-salida">
+          <span class="alerta-salida-icono">🖨️</span>
+          <div><strong>O imprímela</strong>
+          <span class="detalle">Los campos de abajo funcionan igual en papel: se llena a mano y nos la mandas escaneada o en foto.</span></div>
+        </div>
+      </div>
+      <p class="alerta-pie">¿Se complicó? No pierdas el tiempo con el archivo: escríbenos a <a href="mailto:consultant@bizi.solutions?subject=Hoja%20de%20trabajo%20Bizi">consultant@bizi.solutions</a> o contéstanos por el mismo chat — las preguntas de abajo se pueden responder en un mensaje, y nosotros las pasamos a la hoja.</p>
+    </div>
+  </div>
+
+  <div class="aviso solo-pantalla" id="aviso-llenar" hidden>
+    <div class="aviso-icono">✍️</div>
+    <p id="nota-guardado">
+      <strong>Puedes llenarla aquí mismo.</strong> Lo que escribas se va guardando solo en
+      este teléfono o computador, así que puedes cerrar y seguir después. No se envía a
+      ninguna parte — este archivo no se conecta a internet. Al terminar, con los botones
+      del final la copias o la descargas para mandárnosla.
+    </p>
+  </div>
+
+  <section class="bloque" data-paso="1">
+    <div class="bloque-cab">
+      <span class="bloque-orden">1</span>
+      <div>
+        <h2>Las 3 a 5 preguntas que hoy no pueden responder</h2>
+        <p class="apunte">⏱ Media hora · lo puede escribir una sola persona</p>
+      </div>
+    </div>
+    <div class="bloque-cuerpo">
+      <p class="pista">
+        No una lista de indicadores: las <strong>decisiones</strong> que hoy se toman a ciegas.
+        <br><span class="ejemplo">Sí sirve: «¿cuánto deja realmente cada sede, después de nómina?»</span>
+        <br><span class="ejemplo">No sirve: «un tablero de ventas» — eso es un mueble, no una pregunta.</span>
+      </p>
+      <p class="pista">
+        Con tres basta. De acá sale el alcance, y por lo tanto el precio: un tablero que no
+        responde una pregunta concreta no se abre dos veces.
+      </p>
+      
+        <div class="campo">
+          <label>Pregunta 1</label>
+          <textarea data-campo="p1_q1" rows="2" placeholder="¿Cuánto deja realmente cada sede, después de nómina?"></textarea>
+        </div>
+        <div class="campo">
+          <label>Pregunta 2</label>
+          <textarea data-campo="p1_q2" rows="2" placeholder="¿Qué clientes dejaron de comprar y nadie se dio cuenta?"></textarea>
+        </div>
+        <div class="campo">
+          <label>Pregunta 3</label>
+          <textarea data-campo="p1_q3" rows="2" placeholder="¿Qué producto se vende mucho y deja poco?"></textarea>
+        </div>
+        <div class="campo">
+          <label>Pregunta 4 <span class="marca-opcional">· opcional</span></label>
+          <textarea data-campo="p1_q4" rows="2" placeholder="Otra pregunta que hoy toca responder a ojo…"></textarea>
+        </div>
+        <div class="campo">
+          <label>Pregunta 5 <span class="marca-opcional">· opcional</span></label>
+          <textarea data-campo="p1_q5" rows="2" placeholder="Otra pregunta que hoy toca responder a ojo…"></textarea>
+        </div>
+    </div>
+  </section>
+
+  <section class="bloque bloque-liviano" data-paso="2">
+    <div class="bloque-cab">
+      <span class="bloque-orden">2</span>
+      <div>
+        <h2>El acuerdo de confidencialidad</h2>
+        <p class="apunte">⏱ Un día, casi siempre · acá no hay nada que escribir</p>
+      </div>
+    </div>
+    <div class="bloque-cuerpo">
+      <p class="pista">
+        El nuestro o el de ustedes, como prefieran — nos da igual cuál, y si tienen modelo
+        propio se firma ese sin discutirlo. Nadie manda datos de verdad sin esto, y con datos
+        de mentira la propuesta también sale de mentira.
+      </p>
+      <div class="campo">
+        <span class="campo-titulo">¿Cómo van con eso?</span>
+        <div class="opciones">
+          <label class="opcion"><input type="radio" name="nda" value="Ya lo firmamos" data-campo="p2_estado"><span>Ya lo firmamos</span></label>
+          <label class="opcion"><input type="radio" name="nda" value="Mándennos el suyo" data-campo="p2_estado"><span>Mándennos el suyo</span></label>
+          <label class="opcion"><input type="radio" name="nda" value="Usamos el nuestro" data-campo="p2_estado"><span>Usamos el nuestro</span></label>
+          <label class="opcion"><input type="radio" name="nda" value="Lo estamos revisando" data-campo="p2_estado"><span>Lo estamos revisando</span></label>
+        </div>
+      </div>
+      <div class="campo">
+        <label>Algo que debamos saber <span class="marca-opcional">· opcional</span></label>
+        <input type="text" data-campo="p2_nota" placeholder="Ej.: lo tiene que aprobar jurídico y se demora dos semanas">
+      </div>
+    </div>
+  </section>
+
+  <section class="bloque" data-paso="3">
+    <div class="bloque-cab">
+      <span class="bloque-orden">3</span>
+      <div>
+        <h2>Los archivos, de dónde salen y quién los maneja</h2>
+        <p class="apunte">⏱ Una hora de quien maneja el sistema</p>
+      </div>
+    </div>
+    <div class="bloque-cuerpo">
+      <p class="pista">
+        Un mes de datos basta — no hace falta el histórico completo todavía. Y lo importante
+        no es el archivo: es saber <strong>de qué sistema salió y a quién preguntarle</strong>.
+        Eso es lo que separa una carga automática todas las noches de alguien pegando un Excel
+        cada lunes: cambia el precio y cambia lo que se puede prometer.
+      </p>
+      <p class="pista">
+        Con describir uno o dos ya se puede trabajar. Hay espacio para cinco; llena los que
+        necesites y deja el resto en blanco — los vacíos no se mandan.
+      </p>
+
+      <div id="archivos">
+      <div class="archivo">
+        <div class="archivo-cab"><span class="archivo-titulo">Archivo 1</span></div>
+
+        <div class="campo">
+          <label>3.1 · Nombre del archivo</label>
+          <p class="pista">
+            Tal como aparece cuando lo exportas, con todo y el final:
+            <span class="ejemplo">ventas_enero.csv</span>. Si el nombre cambia cada mes,
+            escríbelo como sea: <span class="ejemplo">ventas_&lt;mes&gt;.xlsx</span>.
+          </p>
+          <input type="text" data-campo="nombre" placeholder="ventas_enero.csv">
+        </div>
+
+        <div class="campo">
+          <label>3.2 · Tipo de archivo</label>
+          <p class="pista">
+            Son las letras que van después del último punto del nombre. Si no las ves, elige
+            «Otro, o no sé»: con el nombre lo resolvemos nosotros.
+          </p>
+          <select data-campo="tipo"><option value="">Elige…</option><option>Excel (.xlsx, .xls)</option><option>CSV (.csv)</option><option>Texto plano (.txt)</option><option>PDF (.pdf)</option><option>Google Sheets (en línea)</option><option>Acceso directo a la base de datos</option><option>Otro, o no sé</option></select>
+        </div>
+
+        <div class="campo">
+          <label>3.3 · Qué trae adentro</label>
+          <p class="pista">
+            En tus palabras. Ayuda decir tres cosas: <strong>qué es cada fila</strong> (¿una venta?
+            ¿una factura? ¿un día?), <strong>qué periodo cubre</strong> (¿un mes? ¿todo el año?) y
+            <strong>cada cuánto se genera</strong> (diario, semanal, cuando alguien se acuerda).
+            <br><span class="ejemplo">Ej.: «una fila por cada venta; trae fecha, sede, producto,
+            cantidad y valor; sale del POS todas las noches».</span>
+          </p>
+          <textarea data-campo="desc" rows="3" placeholder="Una fila por…"></textarea>
+        </div>
+
+        <div class="campo">
+          <label>3.4 · De dónde sale</label>
+          <p class="pista">
+            El nombre del programa donde le das «Exportar»: el punto de venta, el contable, el de
+            nómina, el de reservas.
+            <span class="ejemplo">Siigo, World Office, Alegra, Zeus, Square, Cloudbeds…</span>
+            Si el archivo lo escribe alguien a mano en Excel, eso también es una fuente: dilo así
+            («lo llena Marcela cada lunes»).
+          </p>
+          <textarea data-campo="fuente" rows="2" placeholder="Ej.: sale del POS Square"></textarea>
+        </div>
+
+        <div class="campo">
+          <label>3.5 · ¿Ese programa tiene conexión API?</label>
+          <p class="pista">
+            Una <strong>API</strong> es una puerta por la que dos programas se pasan la información
+            solos, sin que nadie exporte ni copie nada. Con API, el tablero se actualiza cada noche
+            sin que ustedes hagan nada; sin ella, alguien tiene que exportar el archivo cada cierto
+            tiempo. <strong>No saber está perfectamente bien</strong>: es una pregunta para el
+            proveedor del programa, y la podemos hacer nosotros.
+          </p>
+          <div class="opciones">
+            <label class="opcion"><input type="radio" name="api-1" value="Sí" data-campo="api"><span>Sí tiene</span></label>
+            <label class="opcion"><input type="radio" name="api-1" value="No" data-campo="api"><span>No tiene</span></label>
+            <label class="opcion"><input type="radio" name="api-1" value="No sé" data-campo="api"><span>No sé</span></label>
+          </div>
+        </div>
+
+        <div class="campo">
+          <span class="campo-titulo">3.6 · Quién maneja ese programa</span>
+          <p class="pista">
+            La persona a la que le preguntaríamos por qué esa columna quedó vacía en marzo — y a
+            quien le pediríamos el acceso, si más adelante se conecta solo. Puede ser la misma
+            para los tres archivos: repítela sin problema.
+          </p>
+          
+        <div class="campo">
+          <label>Nombre y cargo</label>
+          <input type="text" data-campo="resp_nombre" placeholder="Ej.: Andrés Gómez, jefe de sistemas">
+        </div>
+        <div class="dupla">
+          <div class="campo"><label>Correo</label>
+            <input type="email" data-campo="resp_correo" placeholder="nombre@empresa.com"></div>
+          <div class="campo"><label>Celular <span class="marca-opcional">· opcional</span></label>
+            <input type="tel" data-campo="resp_cel" placeholder="300 000 0000"></div>
+        </div>
+        </div>
+      </div>
+      <div class="archivo">
+        <div class="archivo-cab"><span class="archivo-titulo">Archivo 2</span></div>
+
+        <div class="campo">
+          <label>3.1 · Nombre del archivo</label>
+          <p class="pista">
+            Tal como aparece cuando lo exportas, con todo y el final:
+            <span class="ejemplo">ventas_enero.csv</span>. Si el nombre cambia cada mes,
+            escríbelo como sea: <span class="ejemplo">ventas_&lt;mes&gt;.xlsx</span>.
+          </p>
+          <input type="text" data-campo="nombre" placeholder="ventas_enero.csv">
+        </div>
+
+        <div class="campo">
+          <label>3.2 · Tipo de archivo</label>
+          <p class="pista">
+            Son las letras que van después del último punto del nombre. Si no las ves, elige
+            «Otro, o no sé»: con el nombre lo resolvemos nosotros.
+          </p>
+          <select data-campo="tipo"><option value="">Elige…</option><option>Excel (.xlsx, .xls)</option><option>CSV (.csv)</option><option>Texto plano (.txt)</option><option>PDF (.pdf)</option><option>Google Sheets (en línea)</option><option>Acceso directo a la base de datos</option><option>Otro, o no sé</option></select>
+        </div>
+
+        <div class="campo">
+          <label>3.3 · Qué trae adentro</label>
+          <p class="pista">
+            En tus palabras. Ayuda decir tres cosas: <strong>qué es cada fila</strong> (¿una venta?
+            ¿una factura? ¿un día?), <strong>qué periodo cubre</strong> (¿un mes? ¿todo el año?) y
+            <strong>cada cuánto se genera</strong> (diario, semanal, cuando alguien se acuerda).
+            <br><span class="ejemplo">Ej.: «una fila por cada venta; trae fecha, sede, producto,
+            cantidad y valor; sale del POS todas las noches».</span>
+          </p>
+          <textarea data-campo="desc" rows="3" placeholder="Una fila por…"></textarea>
+        </div>
+
+        <div class="campo">
+          <label>3.4 · De dónde sale</label>
+          <p class="pista">
+            El nombre del programa donde le das «Exportar»: el punto de venta, el contable, el de
+            nómina, el de reservas.
+            <span class="ejemplo">Siigo, World Office, Alegra, Zeus, Square, Cloudbeds…</span>
+            Si el archivo lo escribe alguien a mano en Excel, eso también es una fuente: dilo así
+            («lo llena Marcela cada lunes»).
+          </p>
+          <textarea data-campo="fuente" rows="2" placeholder="Ej.: sale del POS Square"></textarea>
+        </div>
+
+        <div class="campo">
+          <label>3.5 · ¿Ese programa tiene conexión API?</label>
+          <p class="pista">
+            Una <strong>API</strong> es una puerta por la que dos programas se pasan la información
+            solos, sin que nadie exporte ni copie nada. Con API, el tablero se actualiza cada noche
+            sin que ustedes hagan nada; sin ella, alguien tiene que exportar el archivo cada cierto
+            tiempo. <strong>No saber está perfectamente bien</strong>: es una pregunta para el
+            proveedor del programa, y la podemos hacer nosotros.
+          </p>
+          <div class="opciones">
+            <label class="opcion"><input type="radio" name="api-2" value="Sí" data-campo="api"><span>Sí tiene</span></label>
+            <label class="opcion"><input type="radio" name="api-2" value="No" data-campo="api"><span>No tiene</span></label>
+            <label class="opcion"><input type="radio" name="api-2" value="No sé" data-campo="api"><span>No sé</span></label>
+          </div>
+        </div>
+
+        <div class="campo">
+          <span class="campo-titulo">3.6 · Quién maneja ese programa</span>
+          <p class="pista">
+            La persona a la que le preguntaríamos por qué esa columna quedó vacía en marzo — y a
+            quien le pediríamos el acceso, si más adelante se conecta solo. Puede ser la misma
+            para los tres archivos: repítela sin problema.
+          </p>
+          
+        <div class="campo">
+          <label>Nombre y cargo</label>
+          <input type="text" data-campo="resp_nombre" placeholder="Ej.: Andrés Gómez, jefe de sistemas">
+        </div>
+        <div class="dupla">
+          <div class="campo"><label>Correo</label>
+            <input type="email" data-campo="resp_correo" placeholder="nombre@empresa.com"></div>
+          <div class="campo"><label>Celular <span class="marca-opcional">· opcional</span></label>
+            <input type="tel" data-campo="resp_cel" placeholder="300 000 0000"></div>
+        </div>
+        </div>
+      </div>
+      <div class="archivo">
+        <div class="archivo-cab"><span class="archivo-titulo">Archivo 3</span></div>
+
+        <div class="campo">
+          <label>3.1 · Nombre del archivo</label>
+          <p class="pista">
+            Tal como aparece cuando lo exportas, con todo y el final:
+            <span class="ejemplo">ventas_enero.csv</span>. Si el nombre cambia cada mes,
+            escríbelo como sea: <span class="ejemplo">ventas_&lt;mes&gt;.xlsx</span>.
+          </p>
+          <input type="text" data-campo="nombre" placeholder="ventas_enero.csv">
+        </div>
+
+        <div class="campo">
+          <label>3.2 · Tipo de archivo</label>
+          <p class="pista">
+            Son las letras que van después del último punto del nombre. Si no las ves, elige
+            «Otro, o no sé»: con el nombre lo resolvemos nosotros.
+          </p>
+          <select data-campo="tipo"><option value="">Elige…</option><option>Excel (.xlsx, .xls)</option><option>CSV (.csv)</option><option>Texto plano (.txt)</option><option>PDF (.pdf)</option><option>Google Sheets (en línea)</option><option>Acceso directo a la base de datos</option><option>Otro, o no sé</option></select>
+        </div>
+
+        <div class="campo">
+          <label>3.3 · Qué trae adentro</label>
+          <p class="pista">
+            En tus palabras. Ayuda decir tres cosas: <strong>qué es cada fila</strong> (¿una venta?
+            ¿una factura? ¿un día?), <strong>qué periodo cubre</strong> (¿un mes? ¿todo el año?) y
+            <strong>cada cuánto se genera</strong> (diario, semanal, cuando alguien se acuerda).
+            <br><span class="ejemplo">Ej.: «una fila por cada venta; trae fecha, sede, producto,
+            cantidad y valor; sale del POS todas las noches».</span>
+          </p>
+          <textarea data-campo="desc" rows="3" placeholder="Una fila por…"></textarea>
+        </div>
+
+        <div class="campo">
+          <label>3.4 · De dónde sale</label>
+          <p class="pista">
+            El nombre del programa donde le das «Exportar»: el punto de venta, el contable, el de
+            nómina, el de reservas.
+            <span class="ejemplo">Siigo, World Office, Alegra, Zeus, Square, Cloudbeds…</span>
+            Si el archivo lo escribe alguien a mano en Excel, eso también es una fuente: dilo así
+            («lo llena Marcela cada lunes»).
+          </p>
+          <textarea data-campo="fuente" rows="2" placeholder="Ej.: sale del POS Square"></textarea>
+        </div>
+
+        <div class="campo">
+          <label>3.5 · ¿Ese programa tiene conexión API?</label>
+          <p class="pista">
+            Una <strong>API</strong> es una puerta por la que dos programas se pasan la información
+            solos, sin que nadie exporte ni copie nada. Con API, el tablero se actualiza cada noche
+            sin que ustedes hagan nada; sin ella, alguien tiene que exportar el archivo cada cierto
+            tiempo. <strong>No saber está perfectamente bien</strong>: es una pregunta para el
+            proveedor del programa, y la podemos hacer nosotros.
+          </p>
+          <div class="opciones">
+            <label class="opcion"><input type="radio" name="api-3" value="Sí" data-campo="api"><span>Sí tiene</span></label>
+            <label class="opcion"><input type="radio" name="api-3" value="No" data-campo="api"><span>No tiene</span></label>
+            <label class="opcion"><input type="radio" name="api-3" value="No sé" data-campo="api"><span>No sé</span></label>
+          </div>
+        </div>
+
+        <div class="campo">
+          <span class="campo-titulo">3.6 · Quién maneja ese programa</span>
+          <p class="pista">
+            La persona a la que le preguntaríamos por qué esa columna quedó vacía en marzo — y a
+            quien le pediríamos el acceso, si más adelante se conecta solo. Puede ser la misma
+            para los tres archivos: repítela sin problema.
+          </p>
+          
+        <div class="campo">
+          <label>Nombre y cargo</label>
+          <input type="text" data-campo="resp_nombre" placeholder="Ej.: Andrés Gómez, jefe de sistemas">
+        </div>
+        <div class="dupla">
+          <div class="campo"><label>Correo</label>
+            <input type="email" data-campo="resp_correo" placeholder="nombre@empresa.com"></div>
+          <div class="campo"><label>Celular <span class="marca-opcional">· opcional</span></label>
+            <input type="tel" data-campo="resp_cel" placeholder="300 000 0000"></div>
+        </div>
+        </div>
+      </div>
+      <div class="archivo">
+        <div class="archivo-cab"><span class="archivo-titulo">Archivo 4</span></div>
+
+        <div class="campo">
+          <label>3.1 · Nombre del archivo</label>
+          <p class="pista">
+            Tal como aparece cuando lo exportas, con todo y el final:
+            <span class="ejemplo">ventas_enero.csv</span>. Si el nombre cambia cada mes,
+            escríbelo como sea: <span class="ejemplo">ventas_&lt;mes&gt;.xlsx</span>.
+          </p>
+          <input type="text" data-campo="nombre" placeholder="ventas_enero.csv">
+        </div>
+
+        <div class="campo">
+          <label>3.2 · Tipo de archivo</label>
+          <p class="pista">
+            Son las letras que van después del último punto del nombre. Si no las ves, elige
+            «Otro, o no sé»: con el nombre lo resolvemos nosotros.
+          </p>
+          <select data-campo="tipo"><option value="">Elige…</option><option>Excel (.xlsx, .xls)</option><option>CSV (.csv)</option><option>Texto plano (.txt)</option><option>PDF (.pdf)</option><option>Google Sheets (en línea)</option><option>Acceso directo a la base de datos</option><option>Otro, o no sé</option></select>
+        </div>
+
+        <div class="campo">
+          <label>3.3 · Qué trae adentro</label>
+          <p class="pista">
+            En tus palabras. Ayuda decir tres cosas: <strong>qué es cada fila</strong> (¿una venta?
+            ¿una factura? ¿un día?), <strong>qué periodo cubre</strong> (¿un mes? ¿todo el año?) y
+            <strong>cada cuánto se genera</strong> (diario, semanal, cuando alguien se acuerda).
+            <br><span class="ejemplo">Ej.: «una fila por cada venta; trae fecha, sede, producto,
+            cantidad y valor; sale del POS todas las noches».</span>
+          </p>
+          <textarea data-campo="desc" rows="3" placeholder="Una fila por…"></textarea>
+        </div>
+
+        <div class="campo">
+          <label>3.4 · De dónde sale</label>
+          <p class="pista">
+            El nombre del programa donde le das «Exportar»: el punto de venta, el contable, el de
+            nómina, el de reservas.
+            <span class="ejemplo">Siigo, World Office, Alegra, Zeus, Square, Cloudbeds…</span>
+            Si el archivo lo escribe alguien a mano en Excel, eso también es una fuente: dilo así
+            («lo llena Marcela cada lunes»).
+          </p>
+          <textarea data-campo="fuente" rows="2" placeholder="Ej.: sale del POS Square"></textarea>
+        </div>
+
+        <div class="campo">
+          <label>3.5 · ¿Ese programa tiene conexión API?</label>
+          <p class="pista">
+            Una <strong>API</strong> es una puerta por la que dos programas se pasan la información
+            solos, sin que nadie exporte ni copie nada. Con API, el tablero se actualiza cada noche
+            sin que ustedes hagan nada; sin ella, alguien tiene que exportar el archivo cada cierto
+            tiempo. <strong>No saber está perfectamente bien</strong>: es una pregunta para el
+            proveedor del programa, y la podemos hacer nosotros.
+          </p>
+          <div class="opciones">
+            <label class="opcion"><input type="radio" name="api-4" value="Sí" data-campo="api"><span>Sí tiene</span></label>
+            <label class="opcion"><input type="radio" name="api-4" value="No" data-campo="api"><span>No tiene</span></label>
+            <label class="opcion"><input type="radio" name="api-4" value="No sé" data-campo="api"><span>No sé</span></label>
+          </div>
+        </div>
+
+        <div class="campo">
+          <span class="campo-titulo">3.6 · Quién maneja ese programa</span>
+          <p class="pista">
+            La persona a la que le preguntaríamos por qué esa columna quedó vacía en marzo — y a
+            quien le pediríamos el acceso, si más adelante se conecta solo. Puede ser la misma
+            para los tres archivos: repítela sin problema.
+          </p>
+          
+        <div class="campo">
+          <label>Nombre y cargo</label>
+          <input type="text" data-campo="resp_nombre" placeholder="Ej.: Andrés Gómez, jefe de sistemas">
+        </div>
+        <div class="dupla">
+          <div class="campo"><label>Correo</label>
+            <input type="email" data-campo="resp_correo" placeholder="nombre@empresa.com"></div>
+          <div class="campo"><label>Celular <span class="marca-opcional">· opcional</span></label>
+            <input type="tel" data-campo="resp_cel" placeholder="300 000 0000"></div>
+        </div>
+        </div>
+      </div>
+      <div class="archivo">
+        <div class="archivo-cab"><span class="archivo-titulo">Archivo 5</span></div>
+
+        <div class="campo">
+          <label>3.1 · Nombre del archivo</label>
+          <p class="pista">
+            Tal como aparece cuando lo exportas, con todo y el final:
+            <span class="ejemplo">ventas_enero.csv</span>. Si el nombre cambia cada mes,
+            escríbelo como sea: <span class="ejemplo">ventas_&lt;mes&gt;.xlsx</span>.
+          </p>
+          <input type="text" data-campo="nombre" placeholder="ventas_enero.csv">
+        </div>
+
+        <div class="campo">
+          <label>3.2 · Tipo de archivo</label>
+          <p class="pista">
+            Son las letras que van después del último punto del nombre. Si no las ves, elige
+            «Otro, o no sé»: con el nombre lo resolvemos nosotros.
+          </p>
+          <select data-campo="tipo"><option value="">Elige…</option><option>Excel (.xlsx, .xls)</option><option>CSV (.csv)</option><option>Texto plano (.txt)</option><option>PDF (.pdf)</option><option>Google Sheets (en línea)</option><option>Acceso directo a la base de datos</option><option>Otro, o no sé</option></select>
+        </div>
+
+        <div class="campo">
+          <label>3.3 · Qué trae adentro</label>
+          <p class="pista">
+            En tus palabras. Ayuda decir tres cosas: <strong>qué es cada fila</strong> (¿una venta?
+            ¿una factura? ¿un día?), <strong>qué periodo cubre</strong> (¿un mes? ¿todo el año?) y
+            <strong>cada cuánto se genera</strong> (diario, semanal, cuando alguien se acuerda).
+            <br><span class="ejemplo">Ej.: «una fila por cada venta; trae fecha, sede, producto,
+            cantidad y valor; sale del POS todas las noches».</span>
+          </p>
+          <textarea data-campo="desc" rows="3" placeholder="Una fila por…"></textarea>
+        </div>
+
+        <div class="campo">
+          <label>3.4 · De dónde sale</label>
+          <p class="pista">
+            El nombre del programa donde le das «Exportar»: el punto de venta, el contable, el de
+            nómina, el de reservas.
+            <span class="ejemplo">Siigo, World Office, Alegra, Zeus, Square, Cloudbeds…</span>
+            Si el archivo lo escribe alguien a mano en Excel, eso también es una fuente: dilo así
+            («lo llena Marcela cada lunes»).
+          </p>
+          <textarea data-campo="fuente" rows="2" placeholder="Ej.: sale del POS Square"></textarea>
+        </div>
+
+        <div class="campo">
+          <label>3.5 · ¿Ese programa tiene conexión API?</label>
+          <p class="pista">
+            Una <strong>API</strong> es una puerta por la que dos programas se pasan la información
+            solos, sin que nadie exporte ni copie nada. Con API, el tablero se actualiza cada noche
+            sin que ustedes hagan nada; sin ella, alguien tiene que exportar el archivo cada cierto
+            tiempo. <strong>No saber está perfectamente bien</strong>: es una pregunta para el
+            proveedor del programa, y la podemos hacer nosotros.
+          </p>
+          <div class="opciones">
+            <label class="opcion"><input type="radio" name="api-5" value="Sí" data-campo="api"><span>Sí tiene</span></label>
+            <label class="opcion"><input type="radio" name="api-5" value="No" data-campo="api"><span>No tiene</span></label>
+            <label class="opcion"><input type="radio" name="api-5" value="No sé" data-campo="api"><span>No sé</span></label>
+          </div>
+        </div>
+
+        <div class="campo">
+          <span class="campo-titulo">3.6 · Quién maneja ese programa</span>
+          <p class="pista">
+            La persona a la que le preguntaríamos por qué esa columna quedó vacía en marzo — y a
+            quien le pediríamos el acceso, si más adelante se conecta solo. Puede ser la misma
+            para los tres archivos: repítela sin problema.
+          </p>
+          
+        <div class="campo">
+          <label>Nombre y cargo</label>
+          <input type="text" data-campo="resp_nombre" placeholder="Ej.: Andrés Gómez, jefe de sistemas">
+        </div>
+        <div class="dupla">
+          <div class="campo"><label>Correo</label>
+            <input type="email" data-campo="resp_correo" placeholder="nombre@empresa.com"></div>
+          <div class="campo"><label>Celular <span class="marca-opcional">· opcional</span></label>
+            <input type="tel" data-campo="resp_cel" placeholder="300 000 0000"></div>
+        </div>
+        </div>
+      </div></div>
+
+      <button class="btn btn-agregar solo-pantalla" id="agregar-archivo" type="button" hidden>
+        ＋ Describir otro archivo
+      </button>
+
+      <div class="decide">
+        <h3>Y una cosa más: quién decide</h3>
+        <p class="pista">
+          Quien aprueba el alcance y el presupuesto. Puede ser una de las personas de arriba;
+          lo que no puede pasar es que no sea nadie. Es la razón más común por la que un
+          proyecto de datos se detiene: aparece una duda y no hay a quién preguntarle.
+        </p>
+        
+        <div class="campo">
+          <label>Nombre y cargo</label>
+          <input type="text" data-campo="decide_nombre" placeholder="Ej.: Marcela Ríos, gerente">
+        </div>
+        <div class="dupla">
+          <div class="campo"><label>Correo</label>
+            <input type="email" data-campo="decide_correo" placeholder="nombre@empresa.com"></div>
+          <div class="campo"><label>Celular <span class="marca-opcional">· opcional</span></label>
+            <input type="tel" data-campo="decide_cel" placeholder="300 000 0000"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <p class="apunte">
+    ¿Se traba el punto 3? Es lo normal. Empieza por el 1 y el 2: con las preguntas y el
+    acuerdo firmado ya se puede avanzar bastante.
+  </p>
+
+  <p class="cierre-correo">
+    <strong>Cuando termines:</strong> manda esta hoja y las exportaciones a
+    <strong>consultant@bizi.solutions</strong>, o por el mismo chat por donde te llegó.
+  </p>
+
+  <div class="acciones solo-pantalla" id="acciones" hidden>
+    <button class="btn btn-primario" id="copiar" type="button">Copiar todo</button>
+    <button class="btn btn-fantasma" id="descargar" type="button">Descargar respuestas</button>
+    <button class="btn btn-fantasma" id="imprimir" type="button">Imprimir o guardar en PDF</button>
+    <button class="btn btn-fantasma" id="borrar" type="button">Borrar</button>
+    <p class="acciones-aviso" id="acciones-aviso"></p>
+  </div>
+
+  <div class="rescate" id="rescate">
+    <p class="apunte">Este navegador no deja copiar solo. Selecciona el texto y cópialo:</p>
+    <textarea id="rescate-texto" readonly></textarea>
+  </div>
+</main>
+
+
+<script>
+window.CLIENTE = {"slug":"incolma","nombre":"Incolma"};
+</script>
+<script>
+/* ─────────────────────────────────────────────────────────────────────
+   Bizi — hoja de trabajo del cliente.
+
+   🔴 ESTE ARCHIVO ES UN AGREGADO, NO EL FORMULARIO. Todos los campos
+   están escritos en el HTML: la hoja se llena, se imprime y se devuelve
+   aunque este script no corra nunca. El visor de WhatsApp en iPhone no
+   ejecuta JavaScript, y la primera versión dibujaba los bloques de
+   archivo desde acá — el cliente abrió el archivo y encontró la sección
+   vacía y los botones muertos.
+
+   Lo que agrega, cuando puede:
+     · guardar lo escrito en el mismo aparato, para que cerrar la pestaña
+       a media tarde no borre el trabajo;
+     · armar un texto plano que se pega en WhatsApp o en un correo;
+     · contar cuántos puntos van completos.
+
+   Y lo primero que hace es DESTAPAR esos controles, que nacen ocultos.
+   Un botón que no puede funcionar no se muestra.
+   ───────────────────────────────────────────────────────────────────── */
+'use strict';
+
+(function () {
+  const $ = (s, r) => (r || document).querySelector(s);
+  const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
+
+  // CLIENTE lo inyecta generar_checklist.py justo antes de este archivo.
+  const CLAVE = 'bizi_checklist_' + (window.CLIENTE ? window.CLIENTE.slug : 'demo');
+
+  // Los seis datos de cada archivo. El orden manda: es el del formulario,
+  // el del texto que se copia y el del papel.
+  const CAMPOS_ARCHIVO = [
+    ['nombre', 'Nombre del archivo'],
+    ['tipo', 'Tipo'],
+    ['desc', 'Qué trae adentro'],
+    ['fuente', 'De dónde sale'],
+    ['api', '¿Tiene conexión API?'],
+    ['resp_nombre', 'Quién lo maneja'],
+    ['resp_correo', 'Correo'],
+    ['resp_cel', 'Celular'],
+  ];
+
+  // Para dar por listo un archivo no hace falta el celular: con el correo
+  // o el celular basta, y exigir los dos deja la hoja en rojo para siempre.
+  const OBLIGATORIOS = ['nombre', 'tipo', 'desc', 'fuente', 'api', 'resp_nombre'];
+
+  // ── Guardado local ───────────────────────────────────────────────────
+  // localStorage puede no existir: hay navegadores que lo bloquean cuando
+  // el archivo se abre desde el disco (file://), que es justo como llega
+  // esto por WhatsApp. Si no se puede guardar, se dice; un «se guarda
+  // solo» que no guarda es peor que no ofrecerlo.
+  let sePuedeGuardar = true;
+  try {
+    window.localStorage.setItem(CLAVE + '_prueba', '1');
+    window.localStorage.removeItem(CLAVE + '_prueba');
+  } catch (e) {
+    sePuedeGuardar = false;
+  }
+
+  function leerCampo(el) {
+    if (!el) return '';
+    if (el.type === 'radio') {
+      const marcado = $$(`input[name="${el.name}"]`).find((r) => r.checked);
+      return marcado ? marcado.value : '';
+    }
+    return (el.value || '').trim();
+  }
+
+  /** Un radio se lee una sola vez, por grupo, no una por opción. */
+  function campos(raiz) {
+    const vistos = {};
+    const salida = [];
+    $$('[data-campo]', raiz).forEach((el) => {
+      if (el.type === 'radio') {
+        if (vistos[el.name]) return;
+        vistos[el.name] = true;
+      }
+      salida.push(el);
+    });
+    return salida;
+  }
+
+  const bloques = () => $$('#archivos .archivo');
+
+  /** Los tres bloques repiten los mismos `data-campo`, y está bien: acá
+   *  dentro nunca se busca en todo el documento, siempre dentro del bloque.
+   *  (Los radios sí llevan `name` distinto por bloque — eso lo pone el
+   *  generador, y sin ello marcar «Sí» en uno desmarca el anterior.) */
+  function valorArchivo(bloque, clave) {
+    return leerCampo($(`[data-campo="${clave}"]`, bloque));
+  }
+
+  function valor(clave) {
+    return leerCampo($(`[data-campo="${clave}"]`));
+  }
+
+  function estado() {
+    const generales = {};
+    campos(document).forEach((el) => {
+      if (el.closest('.archivo')) return;
+      generales[el.dataset.campo] = leerCampo(el);
+    });
+    const archivos = bloques().map((b) => {
+      const uno = {};
+      CAMPOS_ARCHIVO.forEach(([c]) => { uno[c] = valorArchivo(b, c); });
+      return uno;
+    });
+    return { generales, archivos };
+  }
+
+  function guardar() {
+    if (!sePuedeGuardar) return;
+    try {
+      window.localStorage.setItem(CLAVE, JSON.stringify(estado()));
+    } catch (e) {
+      sePuedeGuardar = false;
+    }
+  }
+
+  function ponerCampo(el, v) {
+    if (!el || !v) return;
+    if (el.type === 'radio') {
+      const opcion = $$(`input[name="${el.name}"]`).find((r) => r.value === v);
+      if (opcion) opcion.checked = true;
+    } else {
+      el.value = v;
+    }
+  }
+
+  function restaurar() {
+    if (!sePuedeGuardar) return;
+    let datos;
+    try {
+      datos = JSON.parse(window.localStorage.getItem(CLAVE) || 'null');
+    } catch (e) { return; }
+    if (!datos) return;
+
+    campos(document).forEach((el) => {
+      if (el.closest('.archivo')) return;
+      ponerCampo(el, (datos.generales || {})[el.dataset.campo]);
+    });
+    bloques().forEach((b, i) => {
+      const guardado = (datos.archivos || [])[i];
+      if (!guardado) return;
+      CAMPOS_ARCHIVO.forEach(([c]) => ponerCampo($(`[data-campo="${c}"]`, b), guardado[c]));
+    });
+  }
+
+  // ── Cuántos bloques de archivo se ven ────────────────────────────────
+  // Los cinco están en el HTML. Acá sólo se tapan los que sobran: con uno
+  // basta para empezar, y bajar por cuatro bloques vacíos para llegar a lo
+  // que sigue es justo lo que hace que una hoja no se llene.
+  function mostrarBloques(n) {
+    const lista = bloques();
+    const cuantos = Math.min(Math.max(n, 1), lista.length);
+    lista.forEach((b, i) => { b.hidden = i >= cuantos; });
+    const btn = $('#agregar-archivo');
+    if (btn) btn.hidden = cuantos >= lista.length;
+    return cuantos;
+  }
+
+  const visibles = () => bloques().filter((b) => !b.hidden).length;
+
+  const tieneAlgo = (b) => CAMPOS_ARCHIVO.some(([c]) => lleno(valorArchivo(b, c)));
+
+  // ── Avance ───────────────────────────────────────────────────────────
+  const lleno = (v) => Boolean(v && v.trim());
+  const hayContacto = (correo, cel) => lleno(correo) || lleno(cel);
+
+  function archivoCompleto(b) {
+    return OBLIGATORIOS.every((c) => lleno(valorArchivo(b, c))) &&
+      hayContacto(valorArchivo(b, 'resp_correo'), valorArchivo(b, 'resp_cel'));
+  }
+
+  function pasoListo(n) {
+    if (n === 1) return [1, 2, 3, 4, 5].filter((i) => lleno(valor('p1_q' + i))).length >= 3;
+    if (n === 2) return lleno(valor('p2_estado'));
+    if (n === 3) {
+      return bloques().some(archivoCompleto) &&
+        lleno(valor('decide_nombre')) &&
+        hayContacto(valor('decide_correo'), valor('decide_cel'));
+    }
+    return false;
+  }
+
+  function pintarAvance() {
+    let listos = 0;
+    [1, 2, 3].forEach((n) => {
+      const ok = pasoListo(n);
+      if (ok) listos++;
+      const punto = $(`.avance-punto[data-paso="${n}"]`);
+      if (punto) punto.classList.toggle('listo', ok);
+      const bloque = $(`.bloque[data-paso="${n}"]`);
+      if (bloque) bloque.classList.toggle('completo', ok);
+    });
+    $('#avance-texto').textContent = listos + ' de 3 listos';
+  }
+
+  // ── El texto que se copia ────────────────────────────────────────────
+  const PENDIENTE = '(pendiente)';
+  const oPendiente = (v) => (lleno(v) ? v : PENDIENTE);
+
+  function texto() {
+    const hoy = new Date().toLocaleDateString('es-CO', { day: 'numeric', month: 'long', year: 'numeric' });
+    const l = [];
+
+    l.push(`LO QUE NECESITAN DE NOSOTROS — ${window.CLIENTE.nombre}`);
+    l.push(`Diligenciado el ${hoy}`);
+    l.push('');
+
+    l.push('1. LAS PREGUNTAS QUE HOY NO PODEMOS RESPONDER');
+    const preguntas = [1, 2, 3, 4, 5].map((i) => valor('p1_q' + i)).filter(lleno);
+    if (!preguntas.length) l.push('   ' + PENDIENTE);
+    preguntas.forEach((q, i) => l.push(`   ${i + 1}. ${q}`));
+    l.push('');
+
+    l.push('2. ACUERDO DE CONFIDENCIALIDAD');
+    l.push('   ' + oPendiente(valor('p2_estado')));
+    if (lleno(valor('p2_nota'))) l.push('   Nota: ' + valor('p2_nota'));
+    l.push('');
+
+    l.push('3. LOS ARCHIVOS, DE DÓNDE SALEN Y QUIÉN LOS MANEJA');
+    // Un bloque en blanco no se manda: el cliente no tiene por qué llenar
+    // los tres, y tres «(pendiente)» seguidos parecen un reclamo.
+    const llenos = bloques().filter(tieneAlgo);
+    if (!llenos.length) l.push('   ' + PENDIENTE);
+    llenos.forEach((b, i) => {
+      l.push(`   Archivo ${i + 1}`);
+      CAMPOS_ARCHIVO.forEach(([c, etiqueta]) => l.push(`     ${etiqueta}: ${oPendiente(valorArchivo(b, c))}`));
+      l.push('');
+    });
+    if (llenos.length) l.pop();
+    l.push('');
+
+    l.push('   Quién decide');
+    l.push(`     Nombre y cargo: ${oPendiente(valor('decide_nombre'))}`);
+    l.push(`     Correo: ${oPendiente(valor('decide_correo'))}`);
+    l.push(`     Celular: ${oPendiente(valor('decide_cel'))}`);
+
+    const faltan = [1, 2, 3].filter((n) => !pasoListo(n));
+    if (faltan.length) {
+      l.push('');
+      l.push(`Falta por completar: punto ${faltan.join(', ')}.`);
+    }
+    return l.join('\n');
+  }
+
+  function avisar(msg) {
+    const caja = $('#acciones-aviso');
+    caja.textContent = msg;
+    clearTimeout(avisar.t);
+    avisar.t = setTimeout(() => { caja.textContent = ''; }, 4000);
+  }
+
+  function copiar() {
+    const t = texto();
+    const listo = () => avisar('✓ Copiado. Pégalo en el mismo chat por donde te llegó este archivo.');
+
+    // navigator.clipboard no existe en file:// en varios navegadores, así
+    // que hay dos respaldos: el viejo execCommand y, si tampoco, mostrar
+    // el texto para seleccionarlo a mano.
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(t).then(listo, () => respaldo(t, listo));
+    } else {
+      respaldo(t, listo);
+    }
+  }
+
+  function respaldo(t, listo) {
+    const caja = $('#rescate-texto');
+    caja.value = t;
+    $('#rescate').classList.add('visible');
+    caja.focus();
+    caja.select();
+    let copiado = false;
+    try { copiado = document.execCommand('copy'); } catch (e) { copiado = false; }
+    if (copiado) listo();
+    else avisar('Este navegador no deja copiar solo: el texto quedó abajo, selecciónalo y cópialo.');
+  }
+
+  /** Un .txt para adjuntar al correo. Es el respaldo más sólido de los
+   *  tres: no depende del portapapeles ni de que el chat no recorte el
+   *  mensaje, y queda un archivo que el cliente puede volver a abrir. */
+  function descargar() {
+    const nombre = 'hoja_bizi_' + (window.CLIENTE ? window.CLIENTE.slug : 'cliente') + '.txt';
+    try {
+      const url = window.URL.createObjectURL(new window.Blob([texto()], { type: 'text/plain;charset=utf-8' }));
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = nombre;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => window.URL.revokeObjectURL(url), 1000);
+      avisar('✓ Descargada como ' + nombre + '. Adjúntala al correo.');
+    } catch (e) {
+      // Navegador que no deja descargar desde un archivo local: queda el
+      // texto a la vista, que es lo que se iba a descargar de todos modos.
+      respaldo(texto(), () => {});
+      avisar('Este navegador no deja descargar: el texto quedó abajo, selecciónalo y cópialo.');
+    }
+  }
+
+  function hayAlgoEscrito() {
+    return campos(document).some((el) => lleno(leerCampo(el)));
+  }
+
+  function crecer(el) {
+    if (el.tagName !== 'TEXTAREA') return;
+    el.style.height = 'auto';
+    el.style.height = el.scrollHeight + 'px';
+  }
+
+  // ── Arranque ─────────────────────────────────────────────────────────
+  function init() {
+    // Destapar lo que este script sí puede sostener. El aviso de «se guarda
+    // sola» no va acá: ése se destapa al final, cuando se sabe que es verdad.
+    ['#avance', '#acciones'].forEach((s) => {
+      const el = $(s);
+      if (el) el.hidden = false;
+    });
+
+    restaurar();
+
+    // Se destapan los que traigan algo escrito —al reabrir, la hoja tiene
+    // que quedar como se dejó— y como mínimo uno.
+    let conDatos = 0;
+    bloques().forEach((b, i) => { if (tieneAlgo(b)) conDatos = i + 1; });
+    mostrarBloques(conDatos);
+
+    $$('textarea').forEach(crecer);
+    pintarAvance();
+
+    // Un solo oyente para todo el formulario.
+    document.addEventListener('input', (e) => {
+      if (!e.target.dataset || !e.target.dataset.campo) return;
+      crecer(e.target);
+      guardar();
+      pintarAvance();
+    });
+    document.addEventListener('change', (e) => {
+      if (!e.target.dataset || !e.target.dataset.campo) return;
+      guardar();
+      pintarAvance();
+    });
+
+    $('#agregar-archivo').addEventListener('click', () => {
+      const nuevo = bloques()[mostrarBloques(visibles() + 1) - 1];
+      if (!nuevo) return;
+      const primero = nuevo.querySelector('input, textarea, select');
+      if (primero) primero.focus();
+      if (nuevo.scrollIntoView) nuevo.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    $('#copiar').addEventListener('click', copiar);
+    $('#descargar').addEventListener('click', descargar);
+    $('#imprimir').addEventListener('click', () => window.print());
+    $('#borrar').addEventListener('click', () => {
+      if (!window.confirm('¿Borrar todo lo escrito? No se puede deshacer.')) return;
+      try { window.localStorage.removeItem(CLAVE); } catch (e) { /* nada que borrar */ }
+      window.location.reload();
+    });
+
+    // Cerrar con trabajo escrito y sin guardado es la única forma que queda
+    // de perderlo todo. El navegador pregunta antes.
+    window.addEventListener('beforeunload', (e) => {
+      if (sePuedeGuardar || !hayAlgoEscrito()) return;
+      e.preventDefault();
+      e.returnValue = '';
+      return '';
+    });
+
+    // ── Lo último, y sólo si de verdad quedó todo en pie ────────────────
+    // La alerta se retira cuando el guardado está comprobado. Si el script
+    // se cayó antes de llegar acá, o el navegador no deja guardar, el
+    // cliente sigue viendo la advertencia — que en ese caso es cierta.
+    const alerta = $('#alerta-js');
+    if (sePuedeGuardar) {
+      if (alerta) alerta.remove();
+      $('#aviso-llenar').hidden = false;
+    } else if (alerta) {
+      // Caso raro pero real: hay JavaScript, pero el navegador no deja
+      // guardar nada al abrir un archivo del disco. La alerta se queda —
+      // con otro texto, porque el consejo ya no es «ábrela en Safari».
+      alerta.querySelector('.alerta-titulo').textContent =
+        'Sí puedes llenarla, pero no se guarda sola';
+      alerta.querySelector('.alerta-cuerpo > p').innerHTML =
+        '<strong>Este navegador no guarda lo que escribas.</strong> Puedes llenarla sin ' +
+        'problema —de una sola sentada— pero si cierras la página sin copiarla ni ' +
+        'descargarla, se pierde todo.';
+      const salidas = alerta.querySelectorAll('.alerta-salida');
+      if (salidas[0]) {
+        salidas[0].innerHTML = '<span class="alerta-salida-icono">⬇️</span><div>' +
+          '<strong>Descargar respuestas</strong><span class="detalle">Al final de la hoja. ' +
+          'Queda un archivo de texto para adjuntar al correo.</span></div>';
+      }
+      if (salidas[1]) {
+        salidas[1].innerHTML = '<span class="alerta-salida-icono">📋</span><div>' +
+          '<strong>Copiar todo</strong><span class="detalle">Deja el texto listo para pegar ' +
+          'en el chat.</span></div>';
+      }
+    }
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+
+</script>
+</body>
+</html>
