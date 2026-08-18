@@ -2228,7 +2228,12 @@ function opcionesPeriodo() {
 /* ── Comparación contra el periodo anterior ──────────────────────────── */
 // Se compara SIEMPRE el mismo tramo de meses. Contra el año completo, un
 // año en curso siempre "cae", y esa caída es del calendario, no del
-// negocio. Es la regla que ya invirtió un titular en la demo de Fukutex.
+// negocio. Es la regla que ya invirtió un titular en otra demo de este repo.
+//
+// ⚠ Sin nombres de otros clientes acá: este archivo se inyecta ENTERO en el
+// HTML que se le manda a Incolma y que además está publicado. Un comentario
+// es código fuente para nosotros y texto visible para cualquiera que abra
+// «ver código fuente». Ver la prueba de fuga de nombres en probar_demos.js.
 const IDX_MES = {};
 D.meses.forEach((m, i) => { IDX_MES[m] = i; });
 
@@ -2621,7 +2626,7 @@ const Adaptador = {
   // meses del histórico —septiembre, octubre y noviembre— que son plena
   // cosecha cafetera: contra ese pico, la curva de la venta terminaba en 88
   // y el gráfico decía «viene cayendo» de un negocio que creció 5,1%. Era
-  // la misma trampa que ya nos costó un titular en Fukutex, sólo que al
+  // la misma trampa que ya nos costó un titular en otra demo, sólo que al
   // revés. Con la ventana móvil cada punto es un año entero, así que la
   // cosecha entra y sale de los dos extremos y deja de contar.
   tijera(f) {
