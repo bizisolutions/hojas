@@ -11,6 +11,13 @@
      lo que su motor podía cumplir, en vez de tener una lista de excepciones
      escrita a mano en otro archivo. Al regenerar, el sello sube solo. -->
 <meta name="bizi-motor" content="2">
+<meta property="og:type" content="website">
+<meta property="og:title" content="La marca está en menos ferreterías que el año pasado">
+<meta property="og:description" content="Demo interactiva de Incolma: tableros que se filtran, un asistente que responde en español y un formulario que escribe en la base. Datos simulados.">
+<meta property="og:image" content="https://bizisolutions.github.io/hojas/d/mxpxv/og.png">
+<meta property="og:url" content="https://bizisolutions.github.io/hojas/d/mxpxv/">
+<meta property="og:locale" content="es_CO">
+<meta name="twitter:card" content="summary_large_image">
 <title>Incolma · Propuesta Bizi</title>
 <style>
 :root {
@@ -157,6 +164,75 @@ p { color: var(--text-secondary); margin: 0 0 12px; }
 .componente h3 { font-size: 1.04rem; margin-bottom: 9px; }
 .componente p { font-size: .875rem; margin: 0; }
 .componente.cimiento { border-color: rgba(34, 184, 207, .35); }
+.cruce { margin: 18px 0 20px; }
+.cruce-rotulo {
+  display: block; text-align: center; font-size: 0.72rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--accent);
+  margin-bottom: 10px;
+}
+.cruce-rotulo.malo { color: var(--text-muted); }
+.islas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.isla {
+  display: flex; align-items: center; gap: 9px; min-width: 0;
+  padding: 12px 14px; border-radius: 12px;
+  border: 1px dashed rgba(255, 255, 255, .16);
+  background: rgba(255, 255, 255, .02);
+  font-size: 0.87rem; color: var(--text-muted);
+}
+.isla-icono { font-size: 1.05rem; flex: none; }
+.abanico { display: block; width: 100%; height: 46px; }
+.abanico path {
+  fill: none; stroke: var(--accent); stroke-width: 1.4;
+  stroke-linecap: round; opacity: .55;
+  vector-effect: non-scaling-stroke;
+}
+.abanico-movil { display: none; text-align: center; color: var(--accent); font-size: 1.4rem; }
+.cruce-flecha {
+  text-align: center; color: var(--accent); font-size: 1.4rem;
+  line-height: 1; margin: 12px 0 2px; opacity: .7;
+}
+.cofre {
+  display: flex; gap: 20px; align-items: flex-start; padding: 18px 20px;
+  border-radius: 14px;
+  border: 1px solid rgba(34, 184, 207, .38);
+  background: linear-gradient(135deg, rgba(34, 184, 207, .08) 0%, rgba(74, 38, 140, .14) 100%);
+}
+.cofre-dibujo { flex: none; width: 120px; text-align: center; }
+.cofre-pie {
+  display: block; margin-top: 8px; font-size: 0.74rem; font-weight: 600;
+  color: var(--accent-soft); line-height: 1.25;
+}
+.cilindro { width: 100%; height: auto; }
+.cilindro .banda { stroke: rgba(255, 255, 255, .22); stroke-width: 1; }
+.cilindro .tapa { fill: rgba(255, 255, 255, .07); stroke: rgba(255, 255, 255, .3); stroke-width: 1; }
+.cilindro .banda-bronce { fill: rgba(192, 122, 62, .55); }
+.cilindro .banda-plata  { fill: rgba(170, 182, 196, .5); }
+.cilindro .banda-oro    { fill: rgba(224, 179, 77, .6); }
+.cofre-texto { min-width: 0; }
+.cofre-texto h3 { font-size: 0.98rem; margin-bottom: 5px; }
+.cofre-texto p { font-size: 0.87rem; margin: 0 0 12px; }
+.capas { display: grid; gap: 7px; margin-bottom: 12px; }
+.capa {
+  display: flex; align-items: baseline; gap: 9px; flex-wrap: wrap;
+  padding-left: 11px; border-left: 3px solid var(--metal, var(--glass-border));
+  font-size: 0.85rem; color: var(--text-secondary);
+}
+.capa b { color: var(--metal); font-weight: 700; letter-spacing: .01em; }
+.capa-bronce { --metal: #c07a3e; }
+.capa-plata  { --metal: #aab6c4; }
+.capa-oro    { --metal: #e0b34d; }
+.cofre-fichas { display: flex; flex-wrap: wrap; gap: 7px; }
+.cofre-fichas span {
+  font-size: 0.78rem; color: var(--text-secondary);
+  padding: 4px 10px; border-radius: 999px;
+  border: 1px solid var(--glass-border); background: rgba(255, 255, 255, .03);
+}
+.respuesta { text-align: center; margin-top: 16px; }
+.respuesta .cruce-rotulo { margin-bottom: 7px; }
+.respuesta-pregunta {
+  font-size: clamp(1.05rem, 2.6vw, 1.32rem); font-weight: 600;
+  color: var(--text-main); margin: 0; line-height: 1.3;
+}
 .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 16px; }
 .kpi {
   background: var(--glass); border: 1px solid var(--glass-border);
@@ -398,6 +474,31 @@ td.accion { width: 1%; white-space: nowrap; text-align: right; }
   font-size: 0.7rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
   color: var(--accent);
 }
+.riel { display: flex; margin: 14px 0 4px; }
+.riel-hito { flex: 1; min-width: 0; text-align: center; position: relative; }
+.riel-hito::before {
+  content: ''; position: absolute; top: 17px; right: 50%; width: 100%; height: 2px;
+  background: rgba(34, 184, 207, .35);
+}
+.riel-hito:first-child::before { display: none; }
+.riel-nodo {
+  position: relative; z-index: 1; display: grid; place-items: center;
+  width: 36px; height: 36px; margin: 0 auto; border-radius: 50%;
+  font-size: 0.95rem; background: var(--bg-surface);
+  border: 1.5px solid rgba(34, 184, 207, .55);
+}
+.riel-txt {
+  display: block; margin-top: 6px; font-size: 0.75rem; color: var(--text-muted);
+  line-height: 1.25;
+}
+.riel-txt b { color: var(--accent); font-weight: 700; }
+.lt-pasos { margin: 9px 0 0; padding-left: 20px; }
+.lt-pasos li {
+  font-size: 0.84rem; color: var(--text-secondary);
+  padding-left: 3px; margin-bottom: 5px;
+}
+.lt-pasos li::marker { color: var(--accent); font-weight: 700; font-size: 0.78rem; }
+.lt-pasos li:last-child { margin-bottom: 0; }
 .fila-precio {
   display: flex; align-items: center; gap: 14px; padding: 11px 0;
   border-bottom: 1px solid var(--glass-border);
@@ -566,6 +667,14 @@ td.accion { width: 1%; white-space: nowrap; text-align: right; }
   .rejilla-3, .rejilla-2, .componentes { grid-template-columns: 1fr; }
   .comparativa { grid-template-columns: 1fr; }
   .comparativa .flecha { transform: rotate(90deg); padding: 2px 0; }
+  .islas { grid-template-columns: 1fr; gap: 8px; }
+  .abanico { display: none; }
+  .abanico-movil { display: block; margin: 10px 0 4px; }
+  .cofre { flex-direction: column; gap: 14px; padding: 16px; }
+  .cofre-dibujo { width: 84px; }
+  .riel-nodo { width: 32px; height: 32px; font-size: 0.86rem; }
+  .riel-hito::before { top: 15px; }
+  .riel-txt { font-size: 0.7rem; }
   .fila-campos { grid-template-columns: 1fr; }
   .marca-cliente { display: none; }
   .filtros { gap: 11px; }
@@ -793,43 +902,60 @@ td.accion { width: 1%; white-space: nowrap; text-align: right; }
     </div>
   </div>
 
-  <h3 style="margin:26px 0 4px">Y el primero, que es el que cambia el techo</h3>
-  <p class="apunte" style="margin-bottom:14px">Hoy la facturación vive en el ERP, las visitas a los puntos viven en la libreta del asesor, y el censo de ferreterías vive en un Excel que alguien actualiza cuando puede. Una base de datos es simplemente el lugar donde esas tres cosas se cruzan — y ese cruce es el que responde «¿en cuántas ferreterías estuvimos?».</p>
+  <p class="apunte">El primero es el único que no se puede enseñar en una pantalla — y es
+  el que sostiene a los otros dos. Va en la lámina que sigue.</p>
+</section>
+<section class="lamina" data-titulo="La base de datos">
+  <span class="ojillo">El primero — el que cambia el techo</span>
+  <h2>Una base de datos es donde se cruza lo que hoy vive suelto</h2>
+  <p class="entradilla">Facturación, visitas y censo viven en tres sitios distintos. Ninguno de los tres, por su cuenta, sabe responder la pregunta de abajo.</p>
 
-  <div class="comparativa" style="margin-bottom:18px">
-    <div class="tarjeta col-antes">
-      <h3 style="color:var(--bad)">Hoy, en archivos</h3>
-      <ul class="lista-chulo">
-        <li>La venta por producto, sin saber en cuántos puntos</li><li>El consolidado por canal se arma a mano</li><li>Las visitas a los puntos no quedan en ningún sistema</li><li>Nadie sabe qué ferretería dejó de pedir hasta que pasa un año</li><li>El precio por canal se revisa cuando alguien se queja</li>
-      </ul>
+  <div class="cruce">
+    <span class="cruce-rotulo malo">Hoy · cada uno por su lado</span>
+    <div class="islas"><div class="isla"><span class="isla-icono">🧾</span>Facturación del ERP</div><div class="isla"><span class="isla-icono">📓</span>Visitas, en la libreta del asesor</div><div class="isla"><span class="isla-icono">📄</span>Censo de ferreterías, en un Excel</div></div>
+
+    <svg class="abanico" viewBox="0 0 100 12" preserveAspectRatio="none" aria-hidden="true"><path d="M16.67 0 C16.67 7 50 5 50 12"/><path d="M50.00 0 C50.00 7 50 5 50 12"/><path d="M83.33 0 C83.33 7 50 5 50 12"/></svg>
+    <div class="abanico-movil" aria-hidden="true">↓</div>
+
+    <div class="cofre">
+      <div class="cofre-dibujo">
+        <svg class="cilindro" viewBox="0 0 120 148" role="img" aria-label="Una base de datos con sus tres capas: bronce, plata y oro"><path class="banda banda-bronce" d="M16 22 A44 13 0 0 0 104 22 L104 58 A44 13 0 0 1 16 58 Z"/><path class="banda banda-plata" d="M16 58 A44 13 0 0 0 104 58 L104 94 A44 13 0 0 1 16 94 Z"/><path class="banda banda-oro" d="M16 94 A44 13 0 0 0 104 94 L104 130 A44 13 0 0 1 16 130 Z"/><ellipse class="tapa" cx="60" cy="22" rx="44" ry="13"/></svg>
+        <span class="cofre-pie">Una sola base de datos</span>
+      </div>
+      <div class="cofre-texto">
+        <h3>El ERP de facturación, el maestro de clientes y la app de la fuerza de ventas.</h3>
+        <p>Todo eso entra por arriba y baja limpiándose. Son tres capas, y de cualquier
+        número del tablero se puede volver hasta el archivo del que salió.</p>
+        <div class="capas">
+          <div class="capa capa-bronce"><b>Bronce</b><span>Tal como sale del sistema. No se le toca nada, para que siempre se pueda volver al original.</span></div><div class="capa capa-plata"><b>Plata</b><span>Limpio: sin duplicados, con las fechas y los nombres cuadrados.</span></div><div class="capa capa-oro"><b>Oro</b><span>Listo para leer. Es el número que sale en el tablero.</span></div>
+        </div>
+        <div class="cofre-fichas">
+          <span>🕘 Se carga sola, todas las noches</span>
+          <span>🎯 Un número, una sola definición</span>
+          <span>🔒 Histórico completo, con respaldo</span>
+        </div>
+      </div>
     </div>
-    <div class="flecha">→</div>
-    <div class="tarjeta col-despues">
-      <h3 style="color:var(--accent)">Con una base de datos</h3>
-      <ul class="lista-chulo">
-        <li>Venta y cobertura en la misma pantalla</li><li>Se actualiza sola, todas las noches</li><li>La visita se registra desde el celular, en el punto</li><li>Alerta cuando un punto lleva 90 días sin pedir</li><li>La diferencia de precio entre canales, a la vista</li>
-      </ul>
+
+    <div class="cruce-flecha" aria-hidden="true">↓</div>
+
+    <div class="respuesta">
+      <span class="cruce-rotulo">Y recién ahí se puede preguntar</span>
+      <p class="respuesta-pregunta">«¿En cuántas ferreterías estuvimos este mes, y cuáles dejaron de pedir?»</p>
     </div>
   </div>
 
-  <div class="rejilla rejilla-3">
-    <div class="tarjeta beneficio">
-      <div class="beneficio-icono">🎯</div>
-      <div><h3>Un solo número, una sola definición</h3>
-      <p>Hoy la misma cifra puede dar distinto según qué archivo se abra. En una base cada
-      número se define una vez y todos leen el mismo.</p></div>
-    </div>
-    <div class="tarjeta beneficio">
-      <div class="beneficio-icono">🕘</div>
-      <div><h3>Se actualiza sola</h3>
-      <p>La carga corre todas las noches. Nadie tiene que acordarse de pegar el archivo del
-      mes ni de refrescar nada a mano.</p></div>
+  <div class="rejilla rejilla-2" style="align-items:start">
+    <div class="tarjeta col-despues">
+      <h3 style="color:var(--accent)">Lo que se destraba</h3>
+      <ul class="lista-chulo"><li>Venta y cobertura en la misma pantalla</li><li>Se actualiza sola, todas las noches</li><li>La visita se registra desde el celular, en el punto</li><li>Alerta cuando un punto lleva 90 días sin pedir</li><li>La diferencia de precio entre canales, a la vista</li></ul>
     </div>
     <div class="tarjeta beneficio">
       <div class="beneficio-icono">🤖</div>
-      <div><h3>Y habilita la inteligencia artificial</h3>
+      <div><h3>Y es lo que habilita la inteligencia artificial</h3>
       <p>Este es el que cambia el juego. Un modelo de IA <strong>no puede</strong> consultar un
-      Excel guardado en el correo de alguien. Sí puede consultar una base.</p></div>
+      Excel guardado en el correo de alguien. Sí puede consultar una base — y eso es
+      exactamente lo que se ve en la lámina que sigue.</p></div>
     </div>
   </div>
 </section>
@@ -1157,15 +1283,26 @@ td.accion { width: 1%; white-space: nowrap; text-align: right; }
     <h3>Y entonces, de nuestro lado</h3>
     <div class="linea-tiempo">
       <div><span class="lt-cuando">Días 1–3</span>
-        <p>Leemos la exportación de verdad: qué se puede medir, qué no, y qué está mal cargado.
-        Eso último lo decimos aunque no nos convenga.</p></div>
+        <p>Leemos la exportación de verdad: qué se puede medir, qué no, y qué está mal
+        cargado.</p></div>
       <div><span class="lt-cuando">Día 5</span>
         <p>Propuesta escrita: alcance, precio y qué queda <strong>fuera</strong>. Con los hallazgos
         del punto anterior adjuntos, se contrate o no.</p></div>
-      <div><span class="lt-cuando">Después</span>
-        <p>Si siguen, se arranca por <strong>un solo frente</strong> —una sede, una línea— y se
-        cuadra cifra por cifra contra lo que ya tienen. Sumar el resto es repetir el proceso:
-        la estructura queda hecha y se comparte.</p></div>
+      <div><span class="lt-cuando">Construcción</span>
+        <p>Se arranca por <strong>un solo frente</strong> —una sede, una línea— y se cuadra cifra
+        por cifra contra lo que ya tienen. Sumar el resto después es repetir estos mismos cuatro
+        pasos, con la estructura ya hecha.</p>
+        <div class="riel" aria-hidden="true"><div class="riel-hito"><span class="riel-nodo">📥</span><span class="riel-txt"><b>1</b> Los datos</span></div><div class="riel-hito"><span class="riel-nodo">🧪</span><span class="riel-txt"><b>2</b> Las capas</span></div><div class="riel-hito"><span class="riel-nodo">📊</span><span class="riel-txt"><b>3</b> Los tableros</span></div><div class="riel-hito"><span class="riel-nodo">🤖</span><span class="riel-txt"><b>4</b> La IA</span></div></div>
+        <ol class="lt-pasos">
+          <li><strong>Se traen los datos.</strong> La exportación de cada sistema entra tal como
+          sale de él. Nadie vuelve a mover un archivo a mano.</li>
+          <li><strong>Se limpian por capas</strong> — bronce, plata y oro. Cada capa queda
+          guardada, así que de cualquier número se puede ver de dónde salió.</li>
+          <li><strong>Se arman los tableros.</strong> Los mismos que acaban de ver, con sus
+          cifras, sus filtros y sus alertas.</li>
+          <li><strong>Y recién ahí se conecta la IA.</strong> Con el dato ya ordenado, el
+          asistente responde preguntas escritas en español.</li>
+        </ol></div>
     </div>
   </div>
 
